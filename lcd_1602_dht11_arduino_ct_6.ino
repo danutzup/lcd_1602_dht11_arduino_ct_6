@@ -1,5 +1,5 @@
 /*
-danzup arduino atmega2560 6 LM50 sensor , 1 relay , mqtt
+danzup arduino atmega2560 4 LM50 sensor , 1 relay , mqtt , ethernet 
 */
 #include <SPI.h>
 #include <Ethernet.h>
@@ -112,7 +112,7 @@ void setup()
   lcd.clear();
 }
 
-//============
+//=====serial receiving data=======
 void recvWithStartEndMarkers() {
     static boolean recvInProgress = false;
     static byte ndx = 0;
@@ -145,7 +145,7 @@ void recvWithStartEndMarkers() {
     }
 }
 
-//============
+//=======parse serial data=====
 void parseData() {      // split the data into its parts
 
     char * strtokIndx; // this is used by strtok() as an index
